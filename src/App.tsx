@@ -1,12 +1,19 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import StackNavigation from './navigation/StackNavigation';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <Text>My App</Text>
+    <SafeAreaView style={styles.container}>
+      <StackNavigation />
     </SafeAreaView>
   );
 }
 
 export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
