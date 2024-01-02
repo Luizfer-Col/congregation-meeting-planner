@@ -1,4 +1,4 @@
-package com.luizferapps.congregationmeetingplanner
+package com.luizferapps.assignmentsmanager
 
 import android.app.Application
 import com.facebook.react.PackageList
