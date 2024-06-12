@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
+  Pressable,
+  ScrollView,
   StyleSheet,
   Text,
-  View,
   TouchableOpacity,
-  ScrollView,
+  View,
 } from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import {Program} from '../../types';
+import SvgAddProgramIcon from '../icons/AddIcon';
+import ModalAddProgram from './ModalAddProgram';
 
 interface Props {
   hasPrograms: boolean;
@@ -18,18 +21,44 @@ interface Props {
 }
 
 const MyPrograms: React.FC<Props> = ({hasPrograms, programsCreated}) => {
+  const [showModalAddProgram, setShowModalAddProgram] = useState<boolean>(false);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Mis programas</Text>
-      <ScrollView>
-        {hasPrograms &&
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+        <Text style={styles.title}>Mis programas</Text>
+        <Pressable
+          onPress={() => setShowModalAddProgram(true)}
+          style={({pressed}) => ({
+            opacity: pressed ? 0.5 : 1,
+          })}>
+          <SvgAddProgramIcon />
+        </Pressable>
+      </View>
+      <ScrollView style={{marginTop: hp(2)}}>
+        {hasPrograms ? (
           programsCreated.map((program, index) => (
             <TouchableOpacity key={index} style={styles.itemContainer}>
               <Text style={styles.itemText}>{program.month}</Text>
               <Text style={styles.itemText}>...</Text>
             </TouchableOpacity>
-          ))}
+          ))
+        ) : (
+          <Text style={{color: 'black'}}>
+            Aún no tienes ningún programa. Pulsa en el + para agregar uno.
+          </Text>
+        )}
       </ScrollView>
+
+      <ModalAddProgram
+        visible={showModalAddProgram}
+        onClose={() => setShowModalAddProgram(false)}
+      />
     </View>
   );
 };
@@ -42,9 +71,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: hp(2),
-    fontWeight: '600',
+    fontWeight: '700',
     color: 'black',
-    marginBottom: hp(2),
   },
   itemContainer: {
     marginVertical: hp(0.5),
