@@ -1,4 +1,4 @@
-import { Persona, Program, ProgramStatus, Week } from "../types";
+import { Persona, Program, ProgramAvailable, ProgramStatus, Week } from "../types";
 
 export const Programs: Program[] = [
     {
@@ -59,9 +59,9 @@ export const Programs: Program[] = [
 
 
   export const PersonasData: Persona[] = [
-    {nombre: 'Juan Guillermo Francisco Cardona García', genero: 'hombre'},
+    {nombre: 'Juan Guillermo Cardona García', genero: 'hombre'},
     {nombre: 'Laura Rodríguez', genero: 'mujer'},
-    {nombre: 'Carlos Martínez', genero: 'hombre'},
+    {nombre: 'Carlos Alberto Guzmán Martínez', genero: 'hombre'},
     {nombre: 'Ana López', genero: 'mujer'},
     {nombre: 'Miguel González', genero: 'hombre'},
     {nombre: 'Lucía Pérez', genero: 'mujer'},
@@ -89,4 +89,13 @@ export const Programs: Program[] = [
     {nombre: 'Beatriz Fernández', genero: 'mujer'},
     {nombre: 'Pablo Martínez', genero: 'hombre'},
     {nombre: 'Clara González', genero: 'mujer'},
+  ];
+
+
+
+ export const programasAvailable: ProgramAvailable[] = [
+    {month: 'Enero 2024'},
+    {month: 'Febrero 2024'},
+    {month: 'Marzo 2024'},
+    {month: 'Abril 2024'},
   ];

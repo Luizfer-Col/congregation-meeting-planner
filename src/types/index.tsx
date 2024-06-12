@@ -31,3 +31,10 @@ export enum ProgramStatus {
   export interface ExtendedSvgProps  extends SvgProps{
     xmlns?: string;
 }
+
+export interface ProgramAvailable {
+  month: string;
+}
+
+
+export type TypeProgram = 'Mensual' | 'Bimensual';
